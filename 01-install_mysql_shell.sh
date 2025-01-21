@@ -43,7 +43,8 @@ mysql -h mysql.learnnewthings.site -u root -pExpenseApp@1 -e 'show databases;' &
 if [ $? -ne 0 ]; then 
     echo "adding user to the mysql"
     mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILENAME
-    VALIDATE $? "Mysql User is mapped"
+else
+    VALIDATE $? "Mysql User is already mapped"
 fi
 
 
