@@ -45,7 +45,7 @@ else
 fi
 
 cd /app  &>>$LOGFILENAME
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then
     mkdir -p /app
     VALIDATE $? "app directory created"
