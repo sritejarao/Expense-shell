@@ -41,7 +41,7 @@ if [ $? -ne 0 ]; then
     useradd expense  &>>$LOGFILENAME
     VALIDATE $? "expense user added"
 else
-    VALIDATE $? "expense user already present"
+    echo "expense user already present"
 fi
 
 cd /app  &>>$LOGFILENAME
@@ -50,7 +50,7 @@ then
     mkdir -p /app
     VALIDATE $? "app directory created"
 else
-    VALIDATE $? "app directory already present"
+    echo "app directory already present"
 fi
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip  &>>$LOGFILENAME
@@ -75,7 +75,7 @@ if [ $? -ne 0 ]; then
         VALIDATE $? "npm install"
     fi
 else
-    VALIDATE $? "npm already installed"
+    echo "npm already installed"
 fi
 
 cp /home/ec2-user/backend.service /etc/systemd/system/backend.service  &>>$LOGFILENAME
@@ -83,7 +83,7 @@ ll /etc/systemd/system/backend.service  &>>$LOGFILENAME
 if [$? -ne 0 ]; then
     VALIDATE $? "backend.service not present"
 else
-    VALIDATE $? "backend.service is present"
+    echo "backend.service is present"
 fi
 systemctl daemon-reload  &>>$LOGFILENAME
 VALIDATE $? "daemon-reload"
@@ -99,7 +99,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y  &>>$LOGFILENAME
     VALIDATE $? "MySql install"
 else
-    VALIDATE $? "Mysql already installed"
+    echo "Mysql already installed"
 fi
 mysql -h mysql.learnnewthings.site -uroot -pExpenseApp@1 < /app/schema/backend.sql  &>>$LOGFILENAME
 VALIDATE $? "backend.sql loading"
