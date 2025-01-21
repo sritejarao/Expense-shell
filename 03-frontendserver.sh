@@ -7,7 +7,7 @@ day=$(date +%y-%m-%d)
 TIME_STAMP=$(date +%y-%m-%d-%H-%M-%S)
 PATH1="/var/log/script_logs"
 LOGFILENAME="$PATH1/$LOG_FILE-$day.log"
-mkdir -p $PATH1
+
 
 VALIDATE()
 {
@@ -20,10 +20,12 @@ VALIDATE()
 }
 
 if [ $USER -ne 0 ]; then
-    echo "To install mysql user should have root access"
+    echo "To install frontend service, user should have root access"
     exit 1
 else 
-    echo "This user can only install mysql service"
+    echo "This user can only install frontend service"
+    mkdir -p $PATH1
+
 fi
 
 dnf list installed nginx &>>$LOGFILENAME
