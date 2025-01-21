@@ -80,7 +80,7 @@ fi
 
 cp /home/ec2-user/backend.service /etc/systemd/system/backend.service  &>>$LOGFILENAME
 ll /etc/systemd/system/backend.service  &>>$LOGFILENAME
-if [$? -ne 0 ]; then
+if [ $? -ne 0 ]; then
     VALIDATE $? "backend.service not present"
 else
     echo "backend.service is present"
