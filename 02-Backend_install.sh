@@ -79,7 +79,7 @@ else
 fi
 
 cp /home/ec2-user/backend.service /etc/systemd/system/backend.service  &>>$LOGFILENAME
-ll /etc/systemd/system/backend.service  &>>$LOGFILENAME
+ls /etc/systemd/system/backend.service  &>>$LOGFILENAME
 VALIDATE $? "backend.service "
 
 systemctl daemon-reload  &>>$LOGFILENAME
