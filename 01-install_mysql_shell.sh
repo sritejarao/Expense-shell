@@ -7,6 +7,7 @@ day=$(date +%y-%m-%d)
 TIME_STAMP=$(date +%y-%m-%d-%H-%M-%S)
 PATH1="/var/log/script_logs"
 LOGFILENAME="$PATH1/$LOG_FILE-$day.log"
+mkdir -p $PATH1
 
 VALIDATE()
 {
