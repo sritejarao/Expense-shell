@@ -28,17 +28,13 @@ fi
 
 
 dnf module disable nodejs -y &>>$LOGFILENAME
-VALIDATE $? "nodejs:20 disable"
+VALIDATE $? "nodejs disable"
 
 dnf module enable nodejs:20 -y  &>>$LOGFILENAME
 VALIDATE $? "nodejs:20 enable"
 
 dnf install nodejs -y  &>>$LOGFILENAME
-if [$? -ne 0 ] then
-    VALIDATE $? "nodejs installed"
-else
-    VALIDATE $? "nodejs installed"
-fi
+VALIDATE $? "nodejs instaled"
 
 id expense
 if [ $? -ne 0 ]; then
